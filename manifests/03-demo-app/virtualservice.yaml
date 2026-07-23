@@ -12,5 +12,13 @@ spec:
   - route:
     - destination:
         host: httpbin
+        subset: v1
         port:
           number: 8000
+      weight: 80
+    - destination:
+        host: httpbin
+        subset: v2
+        port:
+          number: 8000
+      weight: 20
