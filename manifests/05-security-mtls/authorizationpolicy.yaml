@@ -1,0 +1,16 @@
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: httpbin-allow
+  namespace: demo
+spec:
+  selector:
+    matchLabels:
+      app: httpbin
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        principals:
+        - "cluster.local/ns/demo/sa/sleep"
+        - "cluster.local/ns/istio-system/sa/istio-ingressgateway-service-account"
